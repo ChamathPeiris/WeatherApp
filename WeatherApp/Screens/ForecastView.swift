@@ -15,7 +15,12 @@ struct ForecastView: View {
     @StateObject private var manager = OneCallWeatherManager()
     
     var body: some View {
-            VStack {
+        ZStack{
+            Image("bg")
+                       .resizable()
+                       //.scaledToFill()
+                       .edgesIgnoringSafeArea(.all)
+            
                 Picker("", selection: $unit) {
                     Text("Metric")
                         .tag(WeatherUnit.metric)
@@ -30,16 +35,18 @@ struct ForecastView: View {
                         Section("\(item.dt)") {
                             HStack(spacing: 20) {
                                 Image(systemName: item.icon)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(.cyan)
+                                    .font(.title2)
+                                    .frame(width: 28, height: 28)
+                                    .padding()
+                                    .background(.yellow)
+                                    .cornerRadius(50)
+                                Spacer()
                                 VStack (alignment: .leading) {
-                                    Text(item.weather.description)
+                                    Text(item.weather.description.capitalized)
                                     Text("\(item.temp)")
                                     HStack {
                                         Image(systemName: "cloud.fill")
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(.cyan)
                                         Text("\(item.clouds)%")
                                         Image(systemName: "drop")
                                             .foregroundColor(.blue)
@@ -47,8 +54,7 @@ struct ForecastView: View {
                                     }
                                     Text("Humidity: \(item.humidity)%")
                                 }
-                            }
-                        }
+                            }.clipShape(RoundedRectangle(cornerRadius: 15))                        }
                     }
                     .listStyle(PlainListStyle())
                     .onChange(of: unit) { _ in
@@ -60,6 +66,8 @@ struct ForecastView: View {
             }
             .navigationTitle("Forecast")
             .navigationBarTitleDisplayMode(.inline)
+            
+            
             .onAppear {
                 Task {
                     await manager.getFiveDayForecast(unit: self.unit)
@@ -67,6 +75,9 @@ struct ForecastView: View {
             }
         
     }
+        
+    
+    
 }
 
 struct ForecastView_Previews: PreviewProvider {

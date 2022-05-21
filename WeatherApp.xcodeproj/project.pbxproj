@@ -28,6 +28,7 @@
 		1AC50A252837E8E100595C2B /* OneCallWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A232837E8E100595C2B /* OneCallWeather.swift */; };
 		1AC50A282837E8E800595C2B /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A262837E8E800595C2B /* WeatherModel.swift */; };
 		1AC50A292837E8E800595C2B /* OCWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A272837E8E800595C2B /* OCWeatherModel.swift */; };
+		EF7DC9372838E9F0002AE52E /* WeatherRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7DC9362838E9F0002AE52E /* WeatherRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		1AC50A232837E8E100595C2B /* OneCallWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneCallWeather.swift; sourceTree = "<group>"; };
 		1AC50A262837E8E800595C2B /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		1AC50A272837E8E800595C2B /* OCWeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCWeatherModel.swift; sourceTree = "<group>"; };
+		EF7DC9362838E9F0002AE52E /* WeatherRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				1AC50A172837E8A700595C2B /* Constants.swift */,
+				EF7DC9362838E9F0002AE52E /* WeatherRow.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				1AC50A292837E8E800595C2B /* OCWeatherModel.swift in Sources */,
 				1AC50A0B2837E87000595C2B /* ForecastView.swift in Sources */,
 				1AC50A252837E8E100595C2B /* OneCallWeather.swift in Sources */,
+				EF7DC9372838E9F0002AE52E /* WeatherRow.swift in Sources */,
 				1AC50A1E2837E8C500595C2B /* LocationManager.swift in Sources */,
 				1AC50A152837E89000595C2B /* Double+Extensions.swift in Sources */,
 				1AC50A142837E89000595C2B /* Int+Extensions.swift in Sources */,
