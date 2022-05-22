@@ -1,6 +1,6 @@
 //
 //  OneCallWeather.swift
-//  OpenWeatherMapApp
+//  WeatherApp
 //
 //  Created by Chamath Peiris on 2022-05-16.
 //

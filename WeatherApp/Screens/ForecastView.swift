@@ -1,6 +1,6 @@
 //
-//  RecentsView.swift
-//  OpenWeatherMapApp
+//  ForecastView.swift
+//  WeatherApp
 //
 //  Created by Chamath Peiris on 2022-05-18.
 //
@@ -12,10 +12,15 @@ import SwiftUI
 struct ForecastView: View {
     
     @State private var unit: WeatherUnit = .metric
-    @StateObject private var manager = OneCallWeatherManager()
+    @StateObject private var manager = WeatherManager()
+    
+    @StateObject var locationManager: LocationManager = LocationManager.shared
     
     var body: some View {
         VStack{
+            
+            
+            //picking between metric or imperial
                 Picker("", selection: $unit) {
                     Text("Metric")
                         .tag(WeatherUnit.metric)
@@ -25,7 +30,8 @@ struct ForecastView: View {
                 .pickerStyle(.segmented)
                 .padding()
             Spacer()
-                if let data = manager.weather?.forecast {
+            //show forecast list to the current location
+                if let data = manager.OCweather?.forecast {
                     List (0..<6) { index in
                         let item = data[index]
                         Section(header: HStack{
@@ -41,6 +47,7 @@ struct ForecastView: View {
                                     .background(.yellow)
                                     .cornerRadius(50)
                                 
+                                //show weather informations
                                 VStack (alignment: .leading) {
                                     Text(item.weather.description.capitalized).foregroundColor(.white).fontWeight(.medium)
                                     Text("\(item.temp)").foregroundColor(.white).fontWeight(.medium)
@@ -62,9 +69,9 @@ struct ForecastView: View {
                         }
                     }
                     .listStyle(PlainListStyle())
-                    .onChange(of: unit) { _ in
+                    .onChange(of: unit) { _ in //change values between metric and imperial
                         Task {
-                            await manager.getFiveDayForecast(unit: self.unit)
+                            await manager.getFiveDayForecast(lat: locationManager.location?.latitude ?? 0, lon: locationManager.location?.longitude ?? 0, unit: self.unit)
                         }
                     }
                 }
@@ -77,13 +84,11 @@ struct ForecastView: View {
             
             .onAppear {
                 Task {
-                    await manager.getFiveDayForecast(unit: self.unit)
+                    //get weather forecast information
+                    await manager.getFiveDayForecast(lat: locationManager.location?.latitude ?? 0, lon: locationManager.location?.longitude ?? 0, unit: self.unit)
                 }
             }
-        
     }
-        
-    
     
 }
 

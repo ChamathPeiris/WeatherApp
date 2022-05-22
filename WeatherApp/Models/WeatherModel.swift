@@ -1,6 +1,6 @@
 //
 //  WeatherModel.swift
-//  OpenWeatherMapApp
+//  WeatherApp
 //
 //  Created by Chamath Peiris on 2022-05-16.
 //
@@ -24,6 +24,7 @@ struct WeatherModel {
         return String(format: "%.1f", temperature)
     }
     
+    //icons for conditions
     var conditionIcon: String {
         switch id {
         case 200...232:
@@ -45,6 +46,7 @@ struct WeatherModel {
         }
     }
     
+    //detailed data of weather for search view
     var detailedData: [WeatherDetailData] {
         return [
             .init(title: "Temperature", icon: "thermometer", color: Color.red, value: tempString, unit: self.unit == .metric ? "°C" : "°F"),

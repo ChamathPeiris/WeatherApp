@@ -23,11 +23,10 @@
 		1AC50A182837E8A700595C2B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A172837E8A700595C2B /* Constants.swift */; };
 		1AC50A1D2837E8C500595C2B /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A1A2837E8C500595C2B /* WeatherManager.swift */; };
 		1AC50A1E2837E8C500595C2B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A1B2837E8C500595C2B /* LocationManager.swift */; };
-		1AC50A1F2837E8C500595C2B /* OneCallWeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A1C2837E8C500595C2B /* OneCallWeatherManager.swift */; };
 		1AC50A242837E8E100595C2B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A222837E8E100595C2B /* Weather.swift */; };
 		1AC50A252837E8E100595C2B /* OneCallWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A232837E8E100595C2B /* OneCallWeather.swift */; };
 		1AC50A282837E8E800595C2B /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A262837E8E800595C2B /* WeatherModel.swift */; };
-		1AC50A292837E8E800595C2B /* OCWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A272837E8E800595C2B /* OCWeatherModel.swift */; };
+		1AC50A292837E8E800595C2B /* OneCallWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC50A272837E8E800595C2B /* OneCallWeatherModel.swift */; };
 		EF7DC9372838E9F0002AE52E /* WeatherRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7DC9362838E9F0002AE52E /* WeatherRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,11 +48,10 @@
 		1AC50A172837E8A700595C2B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1AC50A1A2837E8C500595C2B /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		1AC50A1B2837E8C500595C2B /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		1AC50A1C2837E8C500595C2B /* OneCallWeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneCallWeatherManager.swift; sourceTree = "<group>"; };
 		1AC50A222837E8E100595C2B /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		1AC50A232837E8E100595C2B /* OneCallWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneCallWeather.swift; sourceTree = "<group>"; };
 		1AC50A262837E8E800595C2B /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
-		1AC50A272837E8E800595C2B /* OCWeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCWeatherModel.swift; sourceTree = "<group>"; };
+		1AC50A272837E8E800595C2B /* OneCallWeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneCallWeatherModel.swift; sourceTree = "<group>"; };
 		EF7DC9362838E9F0002AE52E /* WeatherRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				1AC50A1B2837E8C500595C2B /* LocationManager.swift */,
-				1AC50A1C2837E8C500595C2B /* OneCallWeatherManager.swift */,
 				1AC50A1A2837E8C500595C2B /* WeatherManager.swift */,
 			);
 			path = Managers;
@@ -153,7 +150,7 @@
 		1AC50A202837E8D000595C2B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1AC50A272837E8E800595C2B /* OCWeatherModel.swift */,
+				1AC50A272837E8E800595C2B /* OneCallWeatherModel.swift */,
 				1AC50A262837E8E800595C2B /* WeatherModel.swift */,
 				1AC50A212837E8D500595C2B /* Entities */,
 			);
@@ -246,12 +243,11 @@
 				1AC50A282837E8E800595C2B /* WeatherModel.swift in Sources */,
 				1AC50A1D2837E8C500595C2B /* WeatherManager.swift in Sources */,
 				1AC509F72837E80500595C2B /* ContentView.swift in Sources */,
-				1AC50A1F2837E8C500595C2B /* OneCallWeatherManager.swift in Sources */,
 				1AC509F52837E80500595C2B /* WeatherApp.swift in Sources */,
 				1AC50A242837E8E100595C2B /* Weather.swift in Sources */,
 				1AC50A0A2837E87000595C2B /* HomeView.swift in Sources */,
 				1AC50A042837E84300595C2B /* LoadingView.swift in Sources */,
-				1AC50A292837E8E800595C2B /* OCWeatherModel.swift in Sources */,
+				1AC50A292837E8E800595C2B /* OneCallWeatherModel.swift in Sources */,
 				1AC50A0B2837E87000595C2B /* ForecastView.swift in Sources */,
 				1AC50A252837E8E100595C2B /* OneCallWeather.swift in Sources */,
 				EF7DC9372838E9F0002AE52E /* WeatherRow.swift in Sources */,

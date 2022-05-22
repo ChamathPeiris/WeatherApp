@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  OpenWeatherMapApp
+//  WeatherApp
 //
 //  Created by Chamath Peiris on 2022-05-18.
 //
@@ -18,6 +18,7 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 VStack {
+                    //show the current location weather information
                     HStack() {
                         VStack(alignment: .leading) {
                             Text(weatherManager.weather?.name ?? "--")
@@ -33,6 +34,7 @@ struct HomeView: View {
                         
                         Spacer()
                         
+                        //navigate to search view after tapping the search icon
                         NavigationLink(destination: SearchView()) {
                             Image(systemName: "magnifyingglass")
                                 .resizable()
@@ -44,6 +46,7 @@ struct HomeView: View {
                         }
                     }
                     
+                    //show weather icons and temperature of current location
                     HStack {
                         VStack() {
                             Image(systemName: weatherManager.weather?.conditionIcon ?? "cloud")
@@ -64,6 +67,7 @@ struct HomeView: View {
                             .fontWeight(.bold)
                             .padding()
                     }
+                    //display image of the home view
                     .padding(.top)
                     Image("1")
                         .resizable()
@@ -73,7 +77,7 @@ struct HomeView: View {
                 Spacer()
                 
                 HStack {
-                    
+                    //navigate to forecast view after clicking the button
                     NavigationLink(destination: ForecastView()) {
                         Label("Forecast", systemImage: "")
                             .labelStyle(.titleOnly)
@@ -89,7 +93,7 @@ struct HomeView: View {
                     }
                     
                     Spacer()
-                    
+                    //navigate to intervals view after clicking the intervals button
                     NavigationLink(destination: IntervalWeatherView()) {
                         Label("Intervals", systemImage: "")
                             .labelStyle(.titleOnly)
@@ -103,7 +107,7 @@ struct HomeView: View {
                             .font(.system(size: 18, weight: Font.Weight.bold))
                     }
                     
-                }
+                }//button styles
                 .padding()
                 .frame(height: 150)
                 .foregroundColor(Color(hue: 0.656, saturation: 0.787, brightness: 0.354))
@@ -112,11 +116,13 @@ struct HomeView: View {
             }
             .onAppear {
                 Task {
+                    //request for load the weather data
                     locationManager.requestLocation()
                 }
             }
             .onChange(of: locationManager.isLoading) { _ in
                 Task {
+                    //request current location for load weather data
                     await fetchCurrrentWeather(lat: locationManager.location?.latitude ?? 0, lon: locationManager.location?.longitude ?? 0)
                 }
             }
@@ -129,6 +135,7 @@ struct HomeView: View {
         
     }
     
+    //function for load current location
     func fetchCurrrentWeather(lat: Double, lon: Double) async {
         await weatherManager.fetchForCurrentLocation(lat: lat, lon: lon)
     }

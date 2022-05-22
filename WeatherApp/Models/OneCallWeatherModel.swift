@@ -1,6 +1,6 @@
 //
-//  OCWeatherModel.swift
-//  OpenWeatherMapApp
+//  OneCallWeatherModel.swift
+//  WeatherApp
 //
 //  Created by Chamath Peiris on 2022-05-16.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct OCWeatherModel {
+struct OneCallWeatherModel {
     let forecast: [OCWeatherDisplay]
     let hourlyForecasts: [OCWeatherDisplayHourly]
     let current: OCWeatherDisplayHourly

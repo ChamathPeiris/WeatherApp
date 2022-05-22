@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//https://github.com/stephdiep/WeatherApp/tree/main/WeatherApp
 struct WeatherRow: View {
     var logo: String
     var name: String
@@ -14,6 +15,7 @@ struct WeatherRow: View {
     var unit : String
     
     var body: some View {
+        //customized weather row for views
         HStack(spacing: 20) {
             Image(systemName: logo)
                 .font(.title2)

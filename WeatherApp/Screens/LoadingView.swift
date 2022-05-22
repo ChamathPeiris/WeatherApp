@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//https://www.youtube.com/watch?v=ajmd8hk6OEI&list=PLBn01m5Vbs4A5W_LGcsTXNhRcFpi3SJle&index=5
 struct LoadingView: View {
     var body: some View {
         ProgressView()

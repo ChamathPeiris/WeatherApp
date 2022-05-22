@@ -1,6 +1,6 @@
 //
 //  IntervalWeatherView.swift
-//  OpenWeatherMapApp
+//  WeatherApp
 //
 //  Created by Chamath Peiris on 2022-05-18.
 //
@@ -10,16 +10,20 @@ import SwiftUI
 struct IntervalWeatherView: View {
     
     @State private var unit: WeatherUnit = .metric
-    @StateObject private var manager = OneCallWeatherManager()
+    @StateObject var weatherManager = WeatherManager()
+    @StateObject var locationManager: LocationManager = LocationManager.shared
     
     var body: some View {
         VStack {
            
-            if let data = manager.weather {
-                if let current = data.current {
-                    Text("\(current.dt)").foregroundColor(.white).fontWeight(.semibold)
+            
+            if let data = weatherManager.OCweather {
+                    Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
+                        .fontWeight(.light)
+                        .foregroundColor(.white)
+                    
                     HStack {
-                        Image(systemName: current.icon)
+                        Image(systemName: weatherManager.weather?.conditionIcon ?? "cloud")
                             .resizable()
                             .font(.title2)
                             .padding()
@@ -27,15 +31,17 @@ struct IntervalWeatherView: View {
                             .cornerRadius(50)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100)
-                        Text(current.temp)
+                        Text("\(weatherManager.weather?.tempString ?? "--")°C")
                             .font(.system(size: 60, weight: .black, design: .monospaced))
                             .foregroundColor(.white)
                     }
-                    Text("Drizzly")
+                
+                Text("\(weatherManager.weather?.description ?? "--")")
                         .font(.system(size: 30, weight: .regular))
                         .foregroundColor(.white)
                     
-                }
+                
+                //load weather information according to 3 hours by 3 hours
                 List (data.hourlyForecasts) { item in
                   
                     HStack(spacing: 20) {
@@ -76,13 +82,27 @@ struct IntervalWeatherView: View {
         .background(
             LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .top, endPoint: .bottom)
         )
-                
+        
         .onAppear {
             Task {
-                await manager.getFiveDayForecast(unit: self.unit)
+                //request current location
+                locationManager.requestLocation()
+            }
+        }.onChange(of: locationManager.isLoading) { _ in
+            Task {
+                //request forecast weather data and fetch current location for load weather data
+                await weatherManager.getFiveDayForecast(lat: locationManager.location?.latitude ?? 0, lon: locationManager.location?.longitude ?? 0, unit: self.unit)
+                await fetchCurrrentWeather(lat: locationManager.location?.latitude ?? 0, lon: locationManager.location?.longitude ?? 0)
+                
             }
         }
+        
     }
+    //function for load current location
+    func fetchCurrrentWeather(lat: Double, lon: Double) async {
+        await weatherManager.fetchForCurrentLocation(lat: lat, lon: lon)
+    }
+    
 }
 
 struct IntervalWeatherView_Previews: PreviewProvider {
