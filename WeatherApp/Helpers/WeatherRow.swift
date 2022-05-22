@@ -2,7 +2,7 @@
 //  WeatherRow.swift
 //  WeatherApp
 //
-//  Created by user215318 on 5/21/22.
+//  Created by Chamath Peiris on 2022-05-16.
 //
 
 import SwiftUI

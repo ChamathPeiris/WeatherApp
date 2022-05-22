@@ -2,7 +2,7 @@
 //  WeatherManager.swift
 //  OpenWeatherMapApp
 //
-//  Created by Visal Rajapakse on 2022-04-02.
+//  Created by Chamath Peiris on 2022-05-18.
 //
 
 import Foundation
@@ -11,6 +11,7 @@ enum WeatherUnit: String, Equatable {
     case metric = "metric"
     case imperial = "imperial"
 }
+
 
 class WeatherManager: ObservableObject {
     
@@ -23,6 +24,8 @@ class WeatherManager: ObservableObject {
     
     @Published var weather: WeatherModel?
     private var unit: WeatherUnit = .metric
+    
+    var isFail: Bool = false
     
     func fetchForCurrentLocation(lat: Double, lon: Double) async {
         let url = "\(currentWeatherBaseURL)&lat=\(lat ?? defaultLat)&lon=\(lon ?? defaultLon)&units=metric"
@@ -84,9 +87,37 @@ class WeatherManager: ObservableObject {
                                             unit: self.unit)
             }
             print(weather)
+            
         } catch {
+            publish()
             print(error.localizedDescription)
         }
         
     }
+
+    enum Error: LocalizedError {
+        case titleEmpty
+
+        var errorDescription: String? {
+            switch self {
+            case .titleEmpty:
+                return "Location Error"
+            }
+        }
+
+        var recoverySuggestion: String? {
+            switch self {
+            case .titleEmpty:
+                return "Location can be non-existent or include non-alphabetic entries. Please check the location again."
+            }
+        }
+    }
+
+    @Published var title: String = ""
+    @Published var error: Swift.Error?
+
+    func publish() {
+        error = Error.titleEmpty
+    }
+  
 }

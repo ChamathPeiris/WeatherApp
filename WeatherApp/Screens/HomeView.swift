@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  OpenWeatherMapApp
 //
-//  Created by Visal Rajapakse on 2022-04-29.
+//  Created by Chamath Peiris on 2022-05-18.
 //
 
 import SwiftUI
@@ -40,6 +40,7 @@ struct HomeView: View {
                                 .background(.white)
                                 .cornerRadius(100)
                                 .frame(width: 50, height: 50)
+                                .foregroundColor(.blue)
                         }
                     }
                     
@@ -64,11 +65,8 @@ struct HomeView: View {
                             .padding()
                     }
                     .padding(.top)
-                    
-                    Image("homeImage")
-                        .frame(width: 285)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
+                    Image("1")
+                        .resizable()
                 }
                 .padding()
                 
@@ -127,7 +125,8 @@ struct HomeView: View {
             .background(
                 LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .top, endPoint: .bottom)
             )
-        }
+        }.accentColor(.white)
+        
     }
     
     func x(lat: Double, lon: Double) async {

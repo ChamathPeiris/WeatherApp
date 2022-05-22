@@ -2,7 +2,7 @@
 //  String+Extensions.swift
 //  OpenWeatherMapApp
 //
-//  Created by Visal Rajapakse on 2022-04-29.
+//  Created by Chamath Peiris on 2022-05-17.
 //
 
 import Foundation

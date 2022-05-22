@@ -2,7 +2,7 @@
 //  OneCallWeatherManager.swift
 //  OpenWeatherMapApp
 //
-//  Created by Visal Rajapakse on 2022-05-12.
+//  Created by Chamath Peiris on 2022-05-18.
 //
 
 import Foundation

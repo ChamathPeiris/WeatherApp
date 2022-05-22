@@ -2,7 +2,7 @@
 //  RecentsView.swift
 //  OpenWeatherMapApp
 //
-//  Created by Visal Rajapakse on 2022-04-29.
+//  Created by Chamath Peiris on 2022-05-18.
 //
 
 import SwiftUI
@@ -15,12 +15,7 @@ struct ForecastView: View {
     @StateObject private var manager = OneCallWeatherManager()
     
     var body: some View {
-        ZStack{
-            Image("bg")
-                       .resizable()
-                       //.scaledToFill()
-                       .edgesIgnoringSafeArea(.all)
-            
+        VStack{
                 Picker("", selection: $unit) {
                     Text("Metric")
                         .tag(WeatherUnit.metric)
@@ -29,32 +24,42 @@ struct ForecastView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding()
+            Spacer()
                 if let data = manager.weather?.forecast {
                     List (0..<6) { index in
                         let item = data[index]
-                        Section("\(item.dt)") {
+                        Section(header: HStack{
+                            Text("\(item.dt)")
+                                .foregroundColor(.white)
+                        })
+                        {
                             HStack(spacing: 20) {
                                 Image(systemName: item.icon)
                                     .font(.title2)
-                                    .frame(width: 28, height: 28)
+                                    .frame(width: 40, height: 40)
                                     .padding()
                                     .background(.yellow)
                                     .cornerRadius(50)
-                                Spacer()
+                                
                                 VStack (alignment: .leading) {
-                                    Text(item.weather.description.capitalized)
-                                    Text("\(item.temp)")
+                                    Text(item.weather.description.capitalized).foregroundColor(.white).fontWeight(.medium)
+                                    Text("\(item.temp)").foregroundColor(.white).fontWeight(.medium)
                                     HStack {
                                         Image(systemName: "cloud.fill")
-                                            .foregroundColor(.cyan)
-                                        Text("\(item.clouds)%")
-                                        Image(systemName: "drop")
-                                            .foregroundColor(.blue)
-                                        Text("\(item.wind_speed)")
+                                            .foregroundColor(.orange)
+                                        Text("\(item.clouds)%").foregroundColor(.white).fontWeight(.medium)
+                                        Image(systemName: "drop.fill")
+                                            .foregroundColor(.orange)
+                                        Text("\(item.wind_speed)").foregroundColor(.white).fontWeight(.medium)
+                                        
                                     }
-                                    Text("Humidity: \(item.humidity)%")
+                                    Text("Humidity: \(item.humidity)%").foregroundColor(.white).fontWeight(.medium)
+                                    
                                 }
-                            }.clipShape(RoundedRectangle(cornerRadius: 15))                        }
+                            }.clipShape(RoundedRectangle(cornerRadius: 15))
+                            .listRowBackground(Color.clear)
+                            
+                        }
                     }
                     .listStyle(PlainListStyle())
                     .onChange(of: unit) { _ in
@@ -66,7 +71,9 @@ struct ForecastView: View {
             }
             .navigationTitle("Forecast")
             .navigationBarTitleDisplayMode(.inline)
-            
+            .background(
+                LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .top, endPoint: .bottom)
+            )
             
             .onAppear {
                 Task {
