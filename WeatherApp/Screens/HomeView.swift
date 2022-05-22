@@ -117,7 +117,7 @@ struct HomeView: View {
             }
             .onChange(of: locationManager.isLoading) { _ in
                 Task {
-                    await x(lat: locationManager.location?.latitude ?? 0, lon: locationManager.location?.longitude ?? 0)
+                    await fetchCurrrentWeather(lat: locationManager.location?.latitude ?? 0, lon: locationManager.location?.longitude ?? 0)
                 }
             }
             .navigationBarHidden(true)
@@ -129,7 +129,7 @@ struct HomeView: View {
         
     }
     
-    func x(lat: Double, lon: Double) async {
+    func fetchCurrrentWeather(lat: Double, lon: Double) async {
         await weatherManager.fetchForCurrentLocation(lat: lat, lon: lon)
     }
 }
